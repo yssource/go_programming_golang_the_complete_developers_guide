@@ -10,14 +10,6 @@ import (
 	"sync"
 )
 
-/*
-get files and directories
-change each relative path to an absolute one
-read files and show results
-go to each directory
-do the same
-*/
-
 func ls(directory string) ([]string, []string) {
 	files, err := os.ReadDir(directory)
 	if err != nil {
