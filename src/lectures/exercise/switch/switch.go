@@ -13,10 +13,12 @@ package main
 
 import "fmt"
 
-func main() {
-	age := 29
+type Age byte
 
-	switch age {
+func main() {
+	var typedAge Age = 29
+
+	switch typedAge {
 	case 0:
 		fmt.Println("newborn")
 	case 1, 2, 3:
@@ -29,17 +31,30 @@ func main() {
 		fmt.Println("adult")
 	}
 
-	switch secondAge := 0; {
-	case secondAge == 0:
+	switch generalAge := 0; {
+	case generalAge == 0:
 		fmt.Println("newborn")
-	case secondAge >= 1 && secondAge <= 3:
+	case generalAge >= 1 && generalAge <= 3:
 		fmt.Println("toddler")
-	case secondAge >= 4 && secondAge <= 12:
+	case generalAge >= 4 && generalAge <= 12:
 		fmt.Println("child")
-	case secondAge >= 13 && secondAge <= 17:
+	case generalAge >= 13 && generalAge <= 17:
 		fmt.Println("teenager")
 	default:
 		fmt.Println("adult")
+	}
 
+	emptyAge := 13
+	switch {
+	case emptyAge == 0:
+		fmt.Println("newborn")
+	case emptyAge >= 1 && emptyAge <= 3:
+		fmt.Println("toddler")
+	case emptyAge >= 4 && emptyAge <= 12:
+		fmt.Println("child")
+	case emptyAge >= 13 && emptyAge <= 17:
+		fmt.Println("teenager")
+	default:
+		fmt.Println("adult")
 	}
 }
