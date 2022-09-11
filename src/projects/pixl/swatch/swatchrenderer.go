@@ -13,30 +13,30 @@ type SwatchRenderer struct {
 	parent  *Swatch
 }
 
-func (sr *SwatchRenderer) MinSize() fyne.Size {
-	return sr.square.MinSize()
+func (renderer *SwatchRenderer) MinSize() fyne.Size {
+	return renderer.square.MinSize()
 }
 
-func (sr *SwatchRenderer) Layout(size fyne.Size) {
-	sr.objects[0].Resize(size)
+func (renderer *SwatchRenderer) Layout(size fyne.Size) {
+	renderer.objects[0].Resize(size)
 }
 
-func (sr *SwatchRenderer) Refresh() {
-	sr.Layout(fyne.NewSize(20, 20))
-	sr.square.FillColor = sr.parent.Color
-	if sr.parent.Selected {
-		sr.square.StrokeWidth = 3                               // px
-		sr.square.StrokeColor = color.NRGBA{255, 255, 255, 255} // white
-		sr.objects[0] = &sr.square
+func (renderer *SwatchRenderer) Refresh() {
+	renderer.Layout(fyne.NewSize(20, 20))
+	renderer.square.FillColor = renderer.parent.Color
+	if renderer.parent.Selected {
+		renderer.square.StrokeWidth = 3
+		renderer.square.StrokeColor = color.NRGBA{255, 255, 255, 255}
+		renderer.objects[0] = &renderer.square
 	} else {
-		sr.square.StrokeWidth = 0
-		sr.objects[0] = &sr.square
+		renderer.square.StrokeWidth = 0
+		renderer.objects[0] = &renderer.square
 	}
-	canvas.Refresh(sr.parent)
+	canvas.Refresh(renderer.parent)
 }
 
-func (sr *SwatchRenderer) Objects() []fyne.CanvasObject {
-	return sr.objects
+func (renderer *SwatchRenderer) Objects() []fyne.CanvasObject {
+	return renderer.objects
 }
 
-func (sr *SwatchRenderer) Destroy() {} // we need the implementaion to satisfy the interface
+func (renderer *SwatchRenderer) Destroy() {}
