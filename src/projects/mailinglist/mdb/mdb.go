@@ -14,7 +14,7 @@ type EmailEntry struct {
 	OptOut      bool
 }
 
-type GetEmailBatchQueryparams struct {
+type GetEmailBatchQueryParams struct {
 	Page  int
 	Count int
 }
@@ -137,7 +137,7 @@ func DeleteEmail(db *sql.DB, email string) error {
 	return nil
 }
 
-func GetEmailBatch(db *sql.DB, params GetEmailBatchQueryparams) ([]EmailEntry, error) {
+func GetEmailBatch(db *sql.DB, params GetEmailBatchQueryParams) ([]EmailEntry, error) {
 	var empty []EmailEntry
 
 	rows, err := db.Query(`
